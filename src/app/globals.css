@@ -1,0 +1,241 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 96%; /* #F5F5F5 - Light, airy off-white */
+    --foreground: 215 25% 27%; /* Dark Slate Gray for text */
+
+    --muted: 215 20% 92%;
+    --muted-foreground: 215 15% 45%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 215 25% 27%;
+
+    --border: 215 20% 85%; /* Light Slate Gray for borders */
+    --input: 215 20% 88%;
+
+    --primary: 207 98% 73%; /* #77B5FE - Soft sky blue */
+    --primary-foreground: 210 100% 15%; /* Dark blue text for contrast */
+
+    --secondary: 203 93% 95%; /* #e0f2fe - Lighter sky blue for secondary elements */
+    --secondary-foreground: 203 80% 23%; /* #0c4a6e - Darker sky blue text */
+
+    --accent: 33 100% 64%; /* #FFB347 - Warm orange */
+    --accent-foreground: 0 0% 100%; /* White text on orange */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 207 98% 65%; /* A shade of primary for focus rings */
+
+    --radius: 0.5rem;
+
+    /* Custom color variables from HTML for SEO Suite */
+    --sky-900: 203 89% 25%; /* darker for text hover */
+    --sky-800: 203 89% 30%;
+    --sky-700: 203 89% 35%; /* original: #0369a1 */
+    --sky-600: 203 92% 43%; /* original: #0284c7 */
+    --sky-500: 203 90% 53%; /* original: #0ea5e9 */
+    --sky-400: 203 90% 63%;
+    --sky-100: 203 93% 95%; /* original: #e0f2fe - nav-button:not(.active) */
+    --sky-50: 203 93% 97%; /* even lighter sky for backgrounds */
+
+    /* Chart colors - ensure these are distinct and visible */
+    --chart-1: 207 80% 55%;   /* A strong, clear blue (slightly adjusted primary) */
+    --chart-2: 30 100% 60%;   /* A vibrant orange (adjusted accent) */
+    --chart-3: 145 60% 45%;   /* A clear, medium green */
+    --chart-4: 0 75% 60%;     /* A noticeable, slightly softer red */
+    --chart-5: 260 70% 65%;   /* A distinct, medium purple */
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --border: 217 33% 27%;
+    --input: 217 33% 27%;
+    --primary: 207 98% 68%;
+    --primary-foreground: 210 100% 15%;
+    --secondary: 203 30% 25%;
+    --secondary-foreground: 203 80% 85%;
+    --accent: 33 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 207 98% 60%;
+
+    --sky-900: 203 80% 75%;
+    --sky-800: 203 80% 70%;
+    --sky-700: 203 80% 65%;
+    --sky-600: 203 85% 60%;
+    --sky-500: 203 88% 70%;
+    --sky-400: 203 88% 80%;
+    --sky-100: 203 30% 25%;
+    --sky-50: 203 30% 20%;
+
+    /* Chart colors for dark mode - ensure contrast */
+    --chart-1: 207 85% 65%;   /* Lighter blue */
+    --chart-2: 30 100% 70%;   /* Lighter orange */
+    --chart-3: 145 60% 60%;   /* Lighter green */
+    --chart-4: 0 75% 70%;     /* Lighter red */
+    --chart-5: 260 70% 75%;   /* Lighter purple */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom table styles from HTML */
+.table-container {
+  @apply max-h-[450px] overflow-y-auto overflow-x-auto;
+}
+
+.table-container table th,
+.table-container table td {
+  @apply p-2 md:p-3 border border-border text-left text-xs md:text-sm whitespace-nowrap;
+}
+
+.table-container table td.truncate-url a,
+.table-container table td.truncate-text a {
+  @apply inline-block max-w-[150px] md:max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis align-bottom;
+}
+.table-container table td.truncate-url,
+.table-container table td.truncate-text {
+  @apply max-w-[150px] md:max-w-[200px] whitespace-nowrap overflow-hidden text-ellipsis;
+}
+
+
+.table-container table td.wrap-text,
+.table-container table td.wrap-text-detail {
+  @apply whitespace-normal break-words min-w-[150px] max-w-[250px] md:max-w-[300px];
+}
+
+.table-container table th {
+  @apply bg-muted/50 sticky top-0 z-10;
+}
+
+.detail-page-table-container table td.truncate-url a,
+.detail-page-table-container table td.truncate-text a {
+  @apply max-w-none; /* Allow full URL in detail pages */
+}
+.detail-page-table-container table td.wrap-text,
+.detail-page-table-container table td.wrap-text-detail {
+  @apply max-w-md; /* Allow more text in detail pages */
+}
+
+/* Custom styling for dropzone */
+.drop-zone {
+  @apply border-2 border-dashed border-input rounded-md p-6 text-center bg-card transition-colors ease-in-out flex flex-col items-center justify-center relative cursor-pointer min-h-[120px];
+}
+.drop-zone.drag-over {
+  @apply bg-accent/10 border-accent;
+}
+.drop-zone p.drop-instruction {
+  @apply text-muted-foreground text-sm pointer-events-none;
+}
+.drop-zone .file-info {
+  @apply font-medium text-primary mt-2 text-sm break-all pointer-events-none;
+}
+.drop-zone .reset-file-btn {
+  @apply absolute top-2 right-2 bg-destructive text-destructive-foreground rounded-full w-6 h-6 text-xs leading-6 text-center cursor-pointer hidden z-10 flex items-center justify-center;
+}
+.drop-zone.file-loaded .reset-file-btn {
+  @apply flex;
+}
+.drop-zone.file-loaded .drop-instruction {
+  @apply hidden;
+}
+
+.action-button {
+  @apply px-6 py-3 rounded-md font-semibold transition-colors;
+}
+
+.detail-button {
+  @apply bg-sky-500 text-white;
+  @apply px-3 py-1 text-xs;
+  @apply rounded transition-colors hover:bg-sky-600;
+}
+
+/* Print styles */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background-color: white !important; /* Ensure background is white for print */
+    color: black !important; /* Ensure text is black */
+  }
+  
+  /* Hide elements not meant for printing */
+  .no-print, .no-print * {
+    display: none !important;
+  }
+
+  /* Ensure cards and content are visible and flow correctly */
+  .tool5-master-report, .report-section, .card, .card-header, .card-content {
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid #ccc !important; /* Light border for card visibility */
+    box-shadow: none !important;
+    page-break-inside: avoid; /* Try to avoid breaking cards across pages */
+  }
+
+  .report-section {
+    page-break-before: auto; /* Allow page breaks before major sections if needed */
+    margin-top: 20px; /* Add some space before sections on new pages */
+  }
+  .report-h1 {
+    color: #1e3a8a !important; /* Dark blue for H1 titles */
+    page-break-after: avoid; /* Try to keep title with content */
+  }
+  .report-h3 {
+    color: #1e40af !important; /* Slightly lighter blue for H3 */
+    page-break-after: avoid;
+  }
+
+  /* Table styling for print */
+  .table-container, .detail-page-table-container {
+    max-height: none !important; /* Remove scrollbars for print */
+    overflow: visible !important;
+    page-break-inside: auto; /* Allow tables to break across pages if long */
+  }
+  table th, table td {
+    border: 1px solid #ddd !important;
+    white-space: normal !important; /* Allow text wrapping in tables */
+    word-break: break-word;
+  }
+  table th {
+    background-color: #f0f0f0 !important; /* Light gray for table headers */
+  }
+  /* Chart containers */
+  .chart-container {
+     page-break-inside: avoid; /* Try to keep chart and its title together */
+  }
+   /* Ensure chart canvas itself is not hidden by other print styles */
+  canvas {
+    display: block !important; /* or inline-block, depending on layout */
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
